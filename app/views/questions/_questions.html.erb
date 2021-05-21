@@ -1,7 +1,7 @@
 <ul class="list-group mt-3">
   <% @questions.each do |question| %>
     <% @question = question %>
-    <li class="list-group-item mt-3">
+    <li class="list-group-item mt-3 bg-white">
       <div class="row align-items-baseline justify-content-between px-3">
         <span class="badge badge-secondary"><%= User.find(question.user_id).username %></span>
         <small><%= time_ago_in_words(question.created_at) %> ago</small>

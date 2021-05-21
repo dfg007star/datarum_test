@@ -41,4 +41,17 @@ $(function() {
             $('#questionForm').fadeIn(500);
         }, 500)
     })
+
+    $('.accepted a').on('click', function (e) {
+        e.preventDefault();
+        let id = Math.floor(Math.random() * 100) + 1
+        const idAnswer = $(this).data('id-answer');
+        const text = $(`#answerSearch${idAnswer}`);
+        const context = text.html().trim();
+        const word = $(this).data('body');
+        text.html(context.replace(word,`<span class="highlight" id="span${id}">`+ word +'</span>'));
+        if ($(`.highlight`).children().length > 0) {
+            $(`#span${id}`).contents().unwrap();
+        }
+    })
 })

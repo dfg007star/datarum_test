@@ -35,18 +35,13 @@ a:hover {
   margin: 0 auto;
 }
 
-.checkmark {
-  content: '';
-  width: 15px;
-  height: 15px;
-  background-color: #B00100;
-  border-radius: 50%;
+.highlight {
+  background-color: #ffccf1;
+  color: #2E2F30;
+  border-radius: 2px;
+  padding: 2px;
 }
 
-.checkmark-green {
-  content: '';
-  width: 15px;
-  height: 15px;
-  background-color: chartreuse;
-  border-radius: 50%;
+a .badge:hover {
+  opacity: 0.8;
 }

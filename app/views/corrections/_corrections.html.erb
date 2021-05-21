@@ -1,16 +1,16 @@
-<div class="container">
+<div class="container bg-light">
   <% Correction.where(answer_id: @answer.id).order("allowence DESC").each do |correction| %>
     <% @correction = correction %>
     <div class="row align-items-baseline justify-content-between pl-3">
       <span class="badge badge-secondary"><%= User.find(correction.user_id).username %></span>
-      <small><%= time_ago_in_words(correction.created_at) %> ago</small>
+      <small><%= time_ago_in_words(correction.updated_at) %> ago</small>
     </div>
     <div class="row align-items-center mt-3 mb-3 ml-2">
-      <p>
+      <p class="accepted">
         <% if correction.allowence == false %>
-          <div class="checkmark mr-2"></div>
+          <span class="badge badge-danger">Not Accepted</span>
         <% else %>
-        <div class="checkmark-green mr-2"></div>
+          <a href="#" id="acceptedChanges<%= correction.id %>" data-id-answer="<%= correction.answer_id %>" data-body="<%= correction.body %>"><span class="badge badge-success">Accepted</span></a>
         <% end %>
         <%= correction.body %>
       </p>

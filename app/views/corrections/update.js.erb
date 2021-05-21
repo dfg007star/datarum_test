@@ -1,0 +1,4 @@
+<% @question = Question.find(@correction.question_id) %>
+$('#collapseAcceptCor<%= @correction.id %>').collapse('hide');
+$("#answer<%= @question.id %>").html('<%= j render "answers/answers", :locals => @question %>');
+

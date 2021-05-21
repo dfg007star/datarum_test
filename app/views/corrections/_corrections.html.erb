@@ -1,6 +1,7 @@
 <div class="container">
-  <% Correction.where(answer_id: @answer.id, allowence: false).each do |correction| %>
-    <div class="row align-items-baseline justify-content-between px-3">
+  <% Correction.where(answer_id: @answer.id).order("allowence DESC").each do |correction| %>
+    <% @correction = correction %>
+    <div class="row align-items-baseline justify-content-between pl-3">
       <span class="badge badge-secondary"><%= User.find(correction.user_id).username %></span>
       <small><%= time_ago_in_words(correction.created_at) %> ago</small>
     </div>
@@ -8,15 +9,23 @@
       <p>
         <% if correction.allowence == false %>
           <div class="checkmark mr-2"></div>
+        <% else %>
+        <div class="checkmark-green mr-2"></div>
         <% end %>
         <%= correction.body %>
       </p>
     </div>
 
-
     <% current_user.answers.each do |accept_correction| %>
-     <% if accept_correction.id == correction.answer_id %>
+     <% if accept_correction.id == correction.answer_id && correction.allowence == false %>
+        <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= correction.id %>" aria-expanded="false" aria-controls="collapseExample">
+          Accept Correction
+        </button>
 
+        <div class="collapse" id="collapseAcceptCor<%= correction.id %>">
+        <%= render 'corrections/accept_corrections', :locals => {
+          :answer => @answer, :correction => @correction } %>
+        </div>
       <% end %>
     <% end %>
 

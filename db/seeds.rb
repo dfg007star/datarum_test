@@ -6,3 +6,7 @@ vanya = User.create!(:email => '2@mail.ru',
                     :password => '111111',
                     :password_confirmation => '111111',
                     :username => 'Vanya Klochkov')
+kolya = User.create!(:email => '3@mail.ru',
+                     :password => '111111',
+                     :password_confirmation => '111111',
+                     :username => 'Kolya Domashniy')

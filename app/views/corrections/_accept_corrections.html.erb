@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div class="col">
+    <%= form_for @correction, remote: true do |f| %>
+      <% correction = @answer.body + " " + @correction.body %>
+      <div class="form-group">
+        <p>Correcttion from <strong><%= User.find(@correction.user_id).username %>: </strong></p>
+        <%= f.text_area :body, { :value => correction , class: "form-control", readonly: true } %>
+      </div>
+      <%= f.hidden_field :user_id, value: @answer.user_id %>
+      <%= f.hidden_field :answer_id, value: @answer.id %>
+      <%= f.hidden_field :question_id, value: @answer.question_id %>
+      <%= f.submit "Accept Correctoin",  class: "btn btn-sm btn-primary", id: "acceptCorrectionsBtn" %>
+    <% end %>
+  </div>
+</div>

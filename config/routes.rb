@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
+  resources :users
   resources :questions
   resources :answers
   resources :corrections
+  
 end

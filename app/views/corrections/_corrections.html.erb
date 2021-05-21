@@ -1,0 +1,24 @@
+<div class="container">
+  <% Correction.where(answer_id: @answer.id, allowence: false).each do |correction| %>
+    <div class="row align-items-baseline justify-content-between px-3">
+      <span class="badge badge-secondary"><%= User.find(correction.user_id).username %></span>
+      <small><%= time_ago_in_words(correction.created_at) %> ago</small>
+    </div>
+    <div class="row align-items-center mt-3 mb-3 ml-2">
+      <p>
+        <% if correction.allowence == false %>
+          <div class="checkmark mr-2"></div>
+        <% end %>
+        <%= correction.body %>
+      </p>
+    </div>
+
+
+    <% current_user.answers.each do |accept_correction| %>
+     <% if accept_correction.id == correction.answer_id %>
+
+      <% end %>
+    <% end %>
+
+  <% end %>
+</div>

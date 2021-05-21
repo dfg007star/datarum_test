@@ -1,0 +1,16 @@
+<% question_id= Answer.find(@answer.id).question_id %>
+<div class="row mb-3">
+  <div class="col">
+    <%= form_for Correction.new, remote: true do |f| %>
+      <div class="form-group">
+        <p>Suggest correction:</p>
+        <%= f.text_area :body, class:"form-control" %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :question_id, value: question_id %>
+      <%= f.hidden_field :answer_id, value: @answer.id %>
+      <%= f.hidden_field :allowence, value: false %>
+      <%= f.submit "Send Correction",  class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</div>

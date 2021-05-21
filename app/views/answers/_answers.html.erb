@@ -1,0 +1,29 @@
+<div class="container">
+  <% @question.answers.where(question_id: @question.id).each do |answer| %>
+    <% @answer = answer %>
+    <div class="row align-items-baseline justify-content-between px-3">
+      <span class="badge badge-secondary"><%= User.find(answer.user_id).username %></span>
+      <small><%= time_ago_in_words(answer.created_at) %> ago</small>
+    </div>
+    <p class="mt-3 ml-2">
+      <%= answer.body %>
+    </p>
+
+<!--    Corrections-->
+    <div class="container ml-3">
+      <div id="correction<%= answer.id%>" class="border-left">
+        <%= render 'corrections/corrections', :locals => @correction %>
+      </div>
+
+      <% if answer.user_id != current_user.id %>
+      <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseCor<%= answer.id %>" aria-expanded="false" aria-controls="collapseExample">
+        Make Correction
+      </button>
+        <% end %>
+
+      <div class="collapse" id="collapseCor<%= answer.id %>">
+        <%= render 'corrections/form', :locals => @answer %>
+      </div>
+    </div>
+  <% end %>
+</div>

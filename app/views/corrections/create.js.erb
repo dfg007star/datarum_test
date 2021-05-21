@@ -1,0 +1,4 @@
+<% @answer = Answer.find(@correction.answer_id)%>
+$('.form-control').val('');
+$('#collapseCor<%= @answer.id %>').collapse('hide');
+$("#correction<%= @answer.id %>").html('<%= j render "corrections/corrections", :locals => @correction %>');

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  allowence: false
+  user: one
+  question: one
+  answer: one
+
+two:
+  body: MyText
+  allowence: false
+  user: two
+  question: two
+  answer: two

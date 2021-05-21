@@ -1,0 +1,6 @@
+$('.form-control').val('');
+$('#questionForm').fadeOut(500);
+setTimeout(function () {
+    $('#questionNewBtn').fadeIn(500);
+}, 500);
+$("#questions").html('<%= j render "questions/questions", :locals => @questions %>');

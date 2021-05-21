@@ -1,0 +1,9 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <ul class="list-group mb-2">
+      <% resource.errors.full_messages.each do |message| %>
+        <li class="text-danger list-group-item devise-notice"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

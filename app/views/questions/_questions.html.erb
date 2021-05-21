@@ -1,0 +1,31 @@
+<ul class="list-group mt-3">
+  <% @questions.each do |question| %>
+    <% @question = question %>
+    <li class="list-group-item mt-3">
+      <div class="row align-items-baseline justify-content-between px-3">
+        <span class="badge badge-secondary"><%= User.find(question.user_id).username %></span>
+        <small><%= time_ago_in_words(question.created_at) %> ago</small>
+      </div>
+      <div class="border-left">
+        <p class="font-weight-bold mt-3 ml-2">
+          <%= question.title %>
+        </p>
+        <p class="ml-2"><%= question.body %></p>
+
+        <!--      Answer-->
+        <div class="container ml-3">
+          <div id="answer<%= question.id%>" class="border-left">
+            <%= render 'answers/answers', :locals => @question %>
+          </div>
+          <button class="btn btn-sm btn-info my-3" type="button" data-toggle="collapse" data-target="#collapseExample<%= question.id%>" aria-expanded="false" aria-controls="collapseExample">
+           Answer
+          </button>
+
+          <div class="collapse" id="collapseExample<%= question.id%>">
+            <%= render 'answers/form', :locals => @question %>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

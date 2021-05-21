@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_05_20_195726) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -25,9 +28,9 @@ ActiveRecord::Schema.define(version: 2021_05_20_195726) do
   create_table "corrections", force: :cascade do |t|
     t.text "body", null: false
     t.boolean "allowence", default: false
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
-    t.integer "answer_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "answer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["answer_id"], name: "index_corrections_on_answer_id"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_195726) do
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"

@@ -4,4 +4,6 @@ class Correction < ApplicationRecord
   belongs_to :answer
 
   validates :body, presence: true
+
+  default_scope -> { order(allowence: :desc) }
 end

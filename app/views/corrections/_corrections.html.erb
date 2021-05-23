@@ -18,8 +18,8 @@
 
     <% current_user.answers.each do |accept_correction| %>
      <% if accept_correction.id == correction.answer_id && correction.allowence == false %>
-        <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= correction.id %>" aria-expanded="false" aria-controls="collapseExample">
-          Accept Correction
+        <button class="btn btn-sm btn-warning text-white mb-3 collapsed" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= correction.id %>" aria-expanded="false" aria-controls="collapseExample">
+          Accept Correction<i class="arrow"></i>
         </button>
 
         <div class="collapse" id="collapseAcceptCor<%= correction.id %>">

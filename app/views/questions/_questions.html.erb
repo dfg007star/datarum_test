@@ -1,4 +1,4 @@
-<ul class="list-group mt-3">
+<ul class="list-group mb-3">
   <% @questions.each do |question| %>
     <% @question = question %>
     <li class="list-group-item mt-3 bg-white">
@@ -14,11 +14,11 @@
 
 <!--        Answers-->
         <div class="ml-3 bg-light-answers rounded">
-          <div id="answer<%= question.id%>" class="mb-3">
+          <div id="answer" class="mb-3">
             <%= render 'answers/answers', :locals => @question %>
           </div>
-          <button class="btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#collapseExample<%= question.id%>" aria-expanded="false" aria-controls="collapseExample">
-           Answer
+          <button class="btn btn-sm btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseExample<%= question.id%>" aria-expanded="false" aria-controls="collapseExample">
+           Answer<i class="arrow"></i>
           </button>
 
           <div class="collapse mt-3" id="collapseExample<%= question.id%>">

@@ -1,6 +1,6 @@
-$('.form-control').val('');
+$('.form-control-answer').val('');
 $('#collapseExample<%= @question.id %>').collapse('hide');
-$("#answer<%= @question.id %>").html('<%= j render "answers/answers", :locals => @question %>');
+$("#questions").html('<%= j render "questions/questions" %>');
 
 $('.accepted a').on('click', function (e) {
     let id = $(this).data('correction')

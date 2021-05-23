@@ -4,7 +4,7 @@
     <span class="badge badge-secondary"><%= User.find(answer.user_id).username %></span>
     <small><%= time_ago_in_words(answer.created_at) %> ago</small>
   </div>
-  <div class="border-left pl-3">
+  <div class="border-left pl-3 mb-3">
     <p><%= answer.body %>
       <% answer.corrections.where(allowence: true).each do |accept_correction| %>
         <span id="acceptCorrection<%=accept_correction.id %>" class="accept-correction"><%= accept_correction.body %></span>
@@ -17,8 +17,8 @@
       </div>
 
       <% if answer.user_id != current_user.id %>
-        <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseCor<%= answer.id %>" aria-expanded="false" aria-controls="collapseExample">
-          Make Correction
+        <button class="btn btn-sm btn-warning text-white mb-3 collapsed" type="button" data-toggle="collapse" data-target="#collapseCor<%= answer.id %>" aria-expanded="false" aria-controls="collapseExample">
+          Make Correction<i class="arrow"></i>
         </button>
       <% end %>
 

@@ -1,4 +1,10 @@
 $('.btn-new-question').fadeOut()
 $('.form-control').val('');
 $('#questionNewBtn').collapse('hide');
-$("#questions").html('<%= j render "questions/questions", :locals => @questions %>');
+$("#questions").html('<%= j render "questions/questions" %>');
+
+$('.accepted a').on('click', function (e) {
+    let id = $(this).data('correction')
+    e.preventDefault();
+    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+})

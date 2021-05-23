@@ -12,14 +12,22 @@ import jquery from 'jquery'
 window.$ = window.jquery = jquery
 import 'popper.js'
 import "bootstrap"
+import "@fortawesome/fontawesome-free/css/all"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
-
 $(function() {
+    function highlightLink () {
+        $('.accepted a').on('click', function (e) {
+            let id = $(this).data('correction')
+            e.preventDefault();
+            $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+        })
+    }
+    highlightLink();
+
     // hide alert's
     setTimeout(function () {
         $('.alert').fadeOut()
@@ -34,12 +42,6 @@ $(function() {
     setTimeout(function () {
         $('.devise-notice').fadeOut()
     }, 5000)
-
-    $('.accepted a').on('click', function (e) {
-        let id = $(this).data('correction')
-        e.preventDefault();
-        $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
-    })
 
     // Show button for new question
     $('.new-question-title, .new-question-text-area').on('keyup', function() {

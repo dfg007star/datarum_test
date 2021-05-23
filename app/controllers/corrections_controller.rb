@@ -4,12 +4,13 @@ class CorrectionsController < ApplicationController
   def create
     @correction = Correction.create(correction_params)
     @answer = Answer.find(@correction.answer_id)
+    @questions = Question.includes(:answers).order("created_at DESC")
   end
 
   def update
     @correction = Correction.find(params[:id])
     @correction.update(allowence: true)
-    @question = Question.find(@correction.question_id)
+    @questions = Question.includes(:answers).order("created_at DESC")
   end
 
   private

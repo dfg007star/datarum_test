@@ -1,3 +1,9 @@
 $('.form-control-corrections').val('');
-$('#collapseCor<%= @answer.id %>').collapse('hide');
-$("#correction<%= @answer.id %>").html('<%= j render "corrections/corrections", :locals => @correction %>');
+$('#collapseCor<%= @correction.answer_id %>').collapse('hide');
+$("#questions").html('<%= j render "questions/questions" %>');
+
+$('.accepted a').on('click', function (e) {
+    let id = $(this).data('correction')
+    e.preventDefault();
+    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+})

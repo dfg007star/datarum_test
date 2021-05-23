@@ -2,6 +2,8 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+//= require jquery
+//= require jquery_ujs
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -19,14 +21,15 @@ Turbolinks.start()
 ActiveStorage.start()
 
 $(function() {
-    function highlightLink () {
+    $.HighlightText = function() {
         $('.accepted a').on('click', function (e) {
             let id = $(this).data('correction')
             e.preventDefault();
             $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
         })
     }
-    highlightLink();
+
+    $.HighlightText();
 
     // hide alert's
     setTimeout(function () {

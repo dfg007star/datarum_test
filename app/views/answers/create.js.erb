@@ -1,9 +1,4 @@
 $('.form-control-answer').val('');
 $('#collapseExample<%= @question.id %>').collapse('hide');
-$("#questions").html('<%= j render "questions/questions" %>');
-
-$('.accepted a').on('click', function (e) {
-    let id = $(this).data('correction')
-    e.preventDefault();
-    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
-})
+$("#questions").html('<%= j render "questions/questions", collection: @questions %>');
+$.HighlightText();

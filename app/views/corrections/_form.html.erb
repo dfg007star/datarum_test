@@ -1,4 +1,3 @@
-<% question_id= Answer.find(@answer.id).question_id %>
 <div class="row mb-3">
   <div class="col">
     <%= form_for Correction.new, remote: true do |f| %>
@@ -7,7 +6,7 @@
         <%= f.text_area :body, class:"form-control form-control-corrections" %>
       </div>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :question_id, value: question_id %>
+      <%= f.hidden_field :question_id, value: @question.id %>
       <%= f.hidden_field :answer_id, value: @answer.id %>
       <%= f.submit "Send Correction",  class: "btn btn-sm btn-primary" %>
     <% end %>

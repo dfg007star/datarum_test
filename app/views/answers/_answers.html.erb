@@ -13,7 +13,7 @@
     <!--    Corrections-->
     <div class="">
       <div id="correction<%= answer.id %>" class="border-left">
-        <%= render 'corrections/corrections', :locals => @answer %>
+        <%= render 'corrections/corrections' %>
       </div>
 
       <% if answer.user_id != current_user.id %>
@@ -23,7 +23,7 @@
       <% end %>
 
       <div class="collapse" id="collapseCor<%= answer.id %>">
-        <%= render 'corrections/form', :locals => @answer %>
+        <%= render 'corrections/form' %>
       </div>
     </div>
   </div>

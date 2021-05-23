@@ -3,6 +3,7 @@ class CorrectionsController < ApplicationController
 
   def create
     @correction = Correction.create(correction_params)
+    @answer = Answer.find(@correction.answer_id)
   end
 
   def update

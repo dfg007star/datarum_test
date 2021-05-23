@@ -1,8 +1,8 @@
-<button class="btn btn-sm btn-primary pull-right" id="questionNewBtn">Create Question</button>
+<button class="btn btn-sm btn-primary mb-3" type="button" data-toggle="collapse" data-target="#questionNewBtn" aria-expanded="false" aria-controls="collapseExample">
+  Create Question
+</button>
 
-<div id="questionForm" style="display: none">
-  <%= render 'questions/form' %>
-</div>
+<%= render 'questions/form' %>
 
 <div id="questions">
   <%= render 'questions/questions', :locals => @questions %>

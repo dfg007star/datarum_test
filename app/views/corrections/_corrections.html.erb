@@ -1,4 +1,4 @@
-<div class="container bg-light">
+<div class="container">
   <% Correction.where(answer_id: @answer.id).order("allowence DESC").each do |correction| %>
     <% @correction = correction %>
     <div class="row align-items-baseline justify-content-between pl-3">

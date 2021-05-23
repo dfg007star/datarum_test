@@ -12,16 +12,16 @@
         </p>
         <p class="ml-2"><%= question.body %></p>
 
-        <!--      Answer-->
-        <div class="container ml-3">
-          <div id="answer<%= question.id%>" class="border-left">
+<!--        Answers-->
+        <div class="ml-3 bg-light-answers rounded">
+          <div id="answer<%= question.id%>" class="mb-3">
             <%= render 'answers/answers', :locals => @question %>
           </div>
-          <button class="btn btn-sm btn-info my-3" type="button" data-toggle="collapse" data-target="#collapseExample<%= question.id%>" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btn-sm btn-info" type="button" data-toggle="collapse" data-target="#collapseExample<%= question.id%>" aria-expanded="false" aria-controls="collapseExample">
            Answer
           </button>
 
-          <div class="collapse" id="collapseExample<%= question.id%>">
+          <div class="collapse mt-3" id="collapseExample<%= question.id%>">
             <%= render 'answers/form', :locals => @question %>
           </div>
         </div>

@@ -1,4 +1,9 @@
-<% @question = Question.find(@answer.question_id)%>
 $('.form-control').val('');
 $('#collapseExample<%= @question.id %>').collapse('hide');
 $("#answer<%= @question.id %>").html('<%= j render "answers/answers", :locals => @question %>');
+
+$('.accepted a').on('click', function (e) {
+    let id = $(this).data('correction')
+    e.preventDefault();
+    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+})

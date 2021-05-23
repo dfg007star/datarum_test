@@ -35,16 +35,18 @@ $(function() {
         $('.devise-notice').fadeOut()
     }, 5000)
 
-    $('#questionNewBtn').on('click', function () {
-        $(this).fadeOut(500);
-        setTimeout(function (){
-            $('#questionForm').fadeIn(500);
-        }, 500)
-    })
-
     $('.accepted a').on('click', function (e) {
         let id = $(this).data('correction')
         e.preventDefault();
         $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
     })
+
+    // Show button for new question
+    $('.new-question-title, .new-question-text-area').on('keyup', function() {
+        if($('.new-question-title').val() != "" && $('.new-question-text-area').val() != "") {
+            $('.btn-new-question').fadeIn()
+        } else {
+            $('.btn-new-question').fadeOut()
+        }
+    });
 })

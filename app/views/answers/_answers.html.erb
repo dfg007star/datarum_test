@@ -1,34 +1,30 @@
-<div class="container bg-light">
-  <% @question.answers.where(question_id: @question.id).each do |answer| %>
-    <% @answer = answer %>
-    <div class="row align-items-baseline justify-content-between px-3">
-      <span class="badge badge-secondary"><%= User.find(answer.user_id).username %></span>
-      <small><%= time_ago_in_words(answer.created_at) %> ago</small>
-    </div>
-    <div class="row mt-3 ml-2">
-      <p><%= answer.body %>
-        <% answer.corrections.where(allowence: true).each do |accept_correction| %>
-          <span id="acceptCorrection<%=accept_correction.id %>" class="accept-correction"><%= accept_correction.body %></span>
-        <% end %>
-      </p>
-    </div>
-
-
-<!--    Corrections-->
-    <div class="ml-3">
+<% @question.answers.where(question_id: @question.id).each do |answer| %>
+  <% @answer = answer %>
+  <div class="row align-items-baseline justify-content-between px-3 mb-3">
+    <span class="badge badge-secondary"><%= User.find(answer.user_id).username %></span>
+    <small><%= time_ago_in_words(answer.created_at) %> ago</small>
+  </div>
+  <div class="border-left pl-3">
+    <p><%= answer.body %>
+      <% answer.corrections.where(allowence: true).each do |accept_correction| %>
+        <span id="acceptCorrection<%=accept_correction.id %>" class="accept-correction"><%= accept_correction.body %></span>
+      <% end %>
+    </p>
+    <!--    Corrections-->
+    <div class="">
       <div id="correction<%= answer.id %>" class="border-left">
         <%= render 'corrections/corrections', :locals => @answer %>
       </div>
 
       <% if answer.user_id != current_user.id %>
-      <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseCor<%= answer.id %>" aria-expanded="false" aria-controls="collapseExample">
-        Make Correction
-      </button>
-        <% end %>
+        <button class="btn btn-sm btn-warning mb-3" type="button" data-toggle="collapse" data-target="#collapseCor<%= answer.id %>" aria-expanded="false" aria-controls="collapseExample">
+          Make Correction
+        </button>
+      <% end %>
 
       <div class="collapse" id="collapseCor<%= answer.id %>">
         <%= render 'corrections/form', :locals => @answer %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

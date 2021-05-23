@@ -6,10 +6,9 @@ class CorrectionsController < ApplicationController
   end
 
   def update
-    @answer = Answer.find(params[:correction][:answer_id])
     @correction = Correction.find(params[:id])
-    @answer.update(body: params[:correction][:body])
     @correction.update(allowence: true)
+    @question = Question.find(@correction.question_id)
   end
 
   private

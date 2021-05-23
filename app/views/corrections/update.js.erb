@@ -1,13 +1,8 @@
-<% @question = Question.find(@correction.question_id) %>
 $('#collapseAcceptCor<%= @correction.id %>').collapse('hide');
 $("#answer<%= @question.id %>").html('<%= j render "answers/answers", :locals => @question %>');
-$("#correction<%= @correction.answer_id %>").html('<%= j render "corrections/corrections", :locals => @correction %>');
 
 $('.accepted a').on('click', function (e) {
+    let id = $(this).data('correction')
     e.preventDefault();
-    const word = $(this).data('body');
-    const text = $(`#answerSearch${$(this).data('id-answer')}`)
-
-    const context = text.html();
-    text.html(context.replace(word,'<span class="highlight">'+ word +'</span>'));
+    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
 })

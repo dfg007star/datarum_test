@@ -10,7 +10,7 @@
         <% if correction.allowence == false %>
           <span class="badge badge-danger">Not Accepted</span>
         <% else %>
-          <a href="#" id="acceptedChanges<%= correction.id %>" data-id-answer="<%= correction.answer_id %>" data-body="<%= correction.body %>"><span class="badge badge-success">Accepted</span></a>
+          <a href="#" data-correction="<%= correction.id %>"><span class="badge badge-success">Accepted</span></a>
         <% end %>
         <%= correction.body %>
       </p>
@@ -23,8 +23,7 @@
         </button>
 
         <div class="collapse" id="collapseAcceptCor<%= correction.id %>">
-        <%= render 'corrections/accept_corrections', :locals => {
-          :answer => @answer, :correction => @correction } %>
+        <%= render 'corrections/accept_corrections', :locals => @correction %>
         </div>
       <% end %>
     <% end %>

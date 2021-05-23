@@ -3,6 +3,5 @@ class MainController < ApplicationController
 
   def index
     @questions = Question.includes(:answers).order("created_at DESC")
-    @answers = Answer.all
   end
 end

@@ -45,3 +45,13 @@ a:hover {
 a .badge:hover {
   opacity: 0.8;
 }
+
+.accept-correction {
+  transition: all 300ms;
+  border-radius: 5px;
+}
+.accept-correction.accept-correction-selected {
+  background-color: #34ce57;
+  color: white;
+  padding: 0 3px;
+}

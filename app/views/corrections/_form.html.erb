@@ -9,7 +9,6 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :question_id, value: question_id %>
       <%= f.hidden_field :answer_id, value: @answer.id %>
-      <%= f.hidden_field :allowence, value: false %>
       <%= f.submit "Send Correction",  class: "btn btn-sm btn-primary" %>
     <% end %>
   </div>

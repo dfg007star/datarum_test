@@ -7,7 +7,7 @@
     </div>
     <div class="row align-items-center mt-3 mb-3 ml-2">
       <p class="accepted">
-        <% if correction.allowence == false %>
+        <% if correction.allowence == false && correction.user_id == current_user.id %>
           <span class="badge badge-danger">Not Accepted</span>
         <% else %>
           <a href="#" data-correction="<%= correction.id %>"><span class="badge badge-success">Accepted</span></a>

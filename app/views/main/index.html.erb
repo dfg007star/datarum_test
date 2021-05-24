@@ -5,5 +5,5 @@
 <%= render 'questions/form' %>
 
 <div id="questions">
-  <%= render 'questions/questions' %>
+  <%= render :partial => 'questions/questions', :collection => @questions %>
 </div>

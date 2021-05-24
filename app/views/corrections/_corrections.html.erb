@@ -1,32 +1,32 @@
 <div class="container">
-  <% Correction.where(answer_id: @answer.id).each do |correction| %>
-    <% @correction = correction %>
+  <%# Correction.where(answer_id: @answer.id).each do |correction| %>
+    <%# @correction = correction %>
     <div class="row align-items-baseline justify-content-between pl-3">
-      <span class="badge badge-secondary"><%= User.find(correction.user_id).username %></span>
-      <small><%= time_ago_in_words(correction.updated_at) %> ago</small>
+      <span class="badge badge-secondary"><%= User.find(corrections.user_id).username %></span>
+      <small><%= time_ago_in_words(corrections.updated_at) %> ago</small>
     </div>
     <div class="row align-items-center mt-3 mb-3 ml-2">
       <p class="accepted">
-        <% if correction.allowence == false %>
+        <% if corrections.allowence == false %>
           <span class="badge badge-danger">Not Accepted</span>
         <% else %>
-          <a href="#" data-correction="<%= correction.id %>"><span class="badge badge-success">Accepted</span></a>
+          <a href="#" data-correction="<%= corrections.id %>"><span class="badge badge-success">Accepted</span></a>
         <% end %>
-        <%= correction.body %>
+        <%= corrections.body %>
       </p>
     </div>
 
     <% current_user.answers.each do |accept_correction| %>
-     <% if accept_correction.id == correction.answer_id && correction.allowence == false %>
-        <button class="btn btn-sm btn-warning text-white mb-3 collapsed" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= correction.id %>" aria-expanded="false" aria-controls="collapseExample">
+     <% if accept_correction.id == corrections.answer_id && corrections.allowence == false %>
+        <button class="btn btn-sm btn-warning text-white mb-3 collapsed" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= corrections.id %>" aria-expanded="false" aria-controls="collapseExample">
           Accept Correction<i class="arrow"></i>
         </button>
 
-        <div class="collapse" id="collapseAcceptCor<%= correction.id %>">
-        <%= render 'corrections/accept_corrections', :locals => @correction %>
+        <div class="collapse" id="collapseAcceptCor<%= corrections.id %>">
+          <%= render :partial => 'corrections/accept_corrections', :locals => { :correction => corrections } %>
         </div>
       <% end %>
     <% end %>
 
-  <% end %>
+  <%# end %>
 </div>

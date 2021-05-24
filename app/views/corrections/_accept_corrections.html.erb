@@ -1,13 +1,15 @@
+
 <div class="row mb-3">
   <div class="col">
-    <%= form_for @correction, remote: true do |f| %>
+    <%= form_for correction, remote: true do |f| %>
+      <% @answer = Answer.find(correction.answer_id) %>
       <div class="form-group">
-        <p>Correcttion from <strong><%= User.find(@correction.user_id).username %>: </strong></p>
+        <p>Correcttion from <strong><%= User.find(correction.user_id).username %>: </strong></p>
         <%= f.text_area :body, { :value => @answer.body +
           " " +
           @answer.corrections.where(allowence: true).map {|p| [p.body]}.join(' ') +
           " " +
-          @correction.body, class: "form-control", readonly: true } %>
+          correction.body, class: "form-control", readonly: true } %>
       </div>
       <%= f.submit "Accept Correctoin",  class: "btn btn-sm btn-primary", id: "acceptCorrectionsBtn" %>
     <% end %>

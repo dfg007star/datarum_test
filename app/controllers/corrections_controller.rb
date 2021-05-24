@@ -3,14 +3,13 @@ class CorrectionsController < ApplicationController
 
   def create
     @correction = Correction.create(correction_params)
-    @answer = Answer.find(@correction.answer_id)
-    @questions = Question.includes(:answers)
+    @corrections = Correction.where(answer_id: @correction.answer_id)
   end
 
   def update
     @correction = Correction.find(params[:id])
     @correction.update(allowence: true)
-    @questions = Question.includes(:answers)
+    @answers = Answer.where(question_id: @correction.question_id)
   end
 
   private

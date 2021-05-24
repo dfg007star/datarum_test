@@ -1,4 +1,4 @@
 $('.form-control-corrections').val('');
 $('#collapseCor<%= @correction.answer_id %>').collapse('hide');
-$("#questions").html('<%= j render "questions/questions" %>');
-$.HighlightText();
+$(`#correction<%= @correction.answer_id %>`).html('<%= j render :partial => 'corrections/corrections',
+  :collection =>  @corrections %>')

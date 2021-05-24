@@ -1,5 +1,4 @@
 $('.btn-new-question').fadeOut()
 $('.form-control').val('');
 $('#questionNewBtn').collapse('hide');
-$("#questions").html('<%= j render "questions/questions", collection: @questions %>');
-$.HighlightText();
+$("#questions").html('<%= j render :partial => "questions/questions", collection: @questions %>');

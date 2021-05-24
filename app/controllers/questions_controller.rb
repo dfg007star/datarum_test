@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: :destroy
   before_action :authenticate_user!
 
   def create

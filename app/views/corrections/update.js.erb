@@ -1,3 +1,3 @@
 $('#collapseAcceptCor<%= @correction.id %>').collapse('hide');
-$("#questions").html('<%= j render "questions/questions" %>');
-$.HighlightText();
+$(`#answer<%= @correction.question_id %>`).html('<%= j render :partial => 'answers/answers',
+  :collection => @answers %>');

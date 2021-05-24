@@ -20,17 +20,13 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+$(document).on('click','.accepted a', function (e) {
+    let id = $(this).data('correction')
+    e.preventDefault();
+    $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+})
+
 $(function() {
-    $.HighlightText = function() {
-        $('.accepted a').on('click', function (e) {
-            let id = $(this).data('correction')
-            e.preventDefault();
-            $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
-        })
-    }
-
-    $.HighlightText();
-
     // hide alert's
     setTimeout(function () {
         $('.alert').fadeOut()

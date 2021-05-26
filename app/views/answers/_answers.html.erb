@@ -1,31 +1,30 @@
+<div class="row align-items-baseline justify-content-between px-3 mb-3">
+  <span class="badge badge-secondary"><%= User.find(answers.user_id).username %></span>
+  <small class="font-weight-light text-secondary"><%= time_ago_in_words(answers.created_at) %> ago</small>
+</div>
+<div class="border-left pl-3 mb-3">
+  <p><%= answers.body %>
+    <% answers.corrections.where(allowence: true).each do |accept_correction| %>
+      <span id="acceptCorrection<%=accept_correction.id %>" class="accept-correction"><%= accept_correction.body %></span>
+    <% end %>
+  </p>
+  <!--    Corrections-->
+  <div class="">
+    <div id="correction<%= answers.id %>" class="border-left">
+      <%= render :partial => 'corrections/corrections', :collection =>  answers.corrections %>
+    </div>
 
-  <div class="row align-items-baseline justify-content-between px-3 mb-3">
-    <span class="badge badge-secondary"><%= User.find(answers.user_id).username %></span>
-    <small><%= time_ago_in_words(answers.created_at) %> ago</small>
-  </div>
-  <div class="border-left pl-3 mb-3">
-    <p><%= answers.body %>
-      <% answers.corrections.where(allowence: true).each do |accept_correction| %>
-        <span id="acceptCorrection<%=accept_correction.id %>" class="accept-correction"><%= accept_correction.body %></span>
-      <% end %>
-    </p>
-    <!--    Corrections-->
-    <div class="">
-      <div id="correction<%= answers.id %>" class="border-left">
-        <%= render :partial => 'corrections/corrections', :collection =>  answers.corrections %>
-      </div>
+    <% if answers.user_id != current_user.id %>
+      <button class="btn btn-sm btn-warning text-white mb-3 collapsed"
+              type="button" data-toggle="collapse"
+              data-target="#collapseCor<%= answers.id %>"
+              aria-expanded="false" aria-controls="collapseExample">
+        Make Correction<i class="arrow"></i>
+      </button>
+    <% end %>
 
-      <% if answers.user_id != current_user.id %>
-        <button class="btn btn-sm btn-warning text-white mb-3 collapsed"
-                type="button" data-toggle="collapse"
-                data-target="#collapseCor<%= answers.id %>"
-                aria-expanded="false" aria-controls="collapseExample">
-          Make Correction<i class="arrow"></i>
-        </button>
-      <% end %>
-
-      <div class="collapse" id="collapseCor<%= answers.id %>">
-        <%= render :partial => 'corrections/form', :locals => { :answer => answers } %>
-      </div>
+    <div class="collapse" id="collapseCor<%= answers.id %>">
+      <%= render :partial => 'corrections/form', :locals => { :answer => answers } %>
     </div>
   </div>
+</div>

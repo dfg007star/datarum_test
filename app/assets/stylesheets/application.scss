@@ -89,3 +89,14 @@ a .badge:hover {
   margin-bottom: 2px;
   transition: all 300ms;
 }
+
+.highlight-correction {
+  background-color: #ebffe5;
+  transition: all 300ms;
+  border-radius: 5px;
+}
+
+.highlight-correction::before {
+  background-color: white;
+  transition: all 300ms;
+}

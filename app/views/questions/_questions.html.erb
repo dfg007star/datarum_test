@@ -1,31 +1,28 @@
 <ul class="list-group mb-3">
-  <%# @questions.each do |question| %>
-    <%# @question = questions %>
-    <li class="list-group-item mt-3 bg-white">
-      <div class="row align-items-baseline justify-content-between px-3">
-        <span class="badge badge-secondary"><%= User.find(questions.user_id).username %></span>
-        <small><%= time_ago_in_words(questions.created_at) %> ago</small>
-      </div>
-      <div class="border-left">
-        <p class="font-weight-bold mt-3 ml-2">
-          <%= questions.title %>
-        </p>
-        <p class="ml-2"><%= questions.body %></p>
+  <li class="list-group-item mt-3 bg-white">
+    <div class="row align-items-baseline justify-content-between px-3">
+      <span class="badge badge-secondary"><%= User.find(questions.user_id).username %></span>
+      <small class="font-weight-light text-secondary"><%= time_ago_in_words(questions.created_at) %> ago</small>
+    </div>
+    <div class="border-left">
+      <p class="font-weight-bold mt-3 ml-2">
+        <%= questions.title %>
+      </p>
+      <p class="ml-2"><%= questions.body %></p>
 
 <!--        Answers-->
-        <div class="ml-3 bg-light-answers rounded">
-          <div id="answer<%= questions.id%>" class="mb-3">
-            <%= render :partial => 'answers/answers', :collection => questions.answers %>
-          </div>
-          <button class="btn btn-sm btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseExample<%= questions.id%>" aria-expanded="false" aria-controls="collapseExample">
-           Answer<i class="arrow"></i>
-          </button>
+      <div class="ml-3 bg-light-answers rounded">
+        <div id="answer<%= questions.id%>" class="mb-3">
+          <%= render :partial => 'answers/answers', :collection => questions.answers %>
+        </div>
+        <button class="btn btn-sm btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseExample<%= questions.id%>" aria-expanded="false" aria-controls="collapseExample">
+         Answer<i class="arrow"></i>
+        </button>
 
-          <div class="collapse mt-3" id="collapseExample<%= questions.id%>">
-            <%= render :partial => 'answers/form', :locals => { :question => questions } %>
-          </div>
+        <div class="collapse mt-3" id="collapseExample<%= questions.id%>">
+          <%= render :partial => 'answers/form', :locals => { :question => questions } %>
         </div>
       </div>
-    </li>
-  <%# end %>
+    </div>
+  </li>
 </ul>

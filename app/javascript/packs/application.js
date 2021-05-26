@@ -20,10 +20,11 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-$(document).on('click','.accepted a', function (e) {
+$(document).on('click','.correction-status a', function (e) {
     let id = $(this).data('correction')
     e.preventDefault();
     $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
+    $(`#corHlSelected${id}`).fadeIn().toggleClass('highlight-correction');
 })
 
 $(function() {

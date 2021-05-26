@@ -4,11 +4,11 @@
       <span class="badge badge-secondary"><%= User.find(questions.user_id).username %></span>
       <small class="font-weight-light text-secondary"><%= time_ago_in_words(questions.created_at) %> ago</small>
     </div>
-    <div class="border-left">
-      <p class="font-weight-bold mt-3 ml-2">
+    <div class="border-left border-info">
+      <p class="font-weight-bold mt-3 ml-2 ow">
         <%= questions.title %>
       </p>
-      <p class="ml-2"><%= questions.body %></p>
+      <p class="ml-2 ow"><%= questions.body %></p>
 
 <!--        Answers-->
       <div class="ml-3 bg-light-answers rounded">

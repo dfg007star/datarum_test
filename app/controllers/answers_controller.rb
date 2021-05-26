@@ -3,6 +3,9 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.create(answer_params)
+    respond_to do |format|
+      format.js { flash[:notice] = 'Answer was successfully created.' }
+    end
   end
 
   private

@@ -2,3 +2,4 @@ $('.btn-new-question').fadeOut()
 $('.form-control').val('');
 $('#questionNewBtn').collapse('hide');
 $("#questions").html('<%= j render :partial => "questions/questions", collection: @questions %>');
+$('.flash_wrapper').html("<%= j render 'layouts/notice' %>");

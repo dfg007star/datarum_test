@@ -1,5 +1,3 @@
-$('.form-control-corrections').val('');
-$('#collapseCor<%= @correction.answer_id %>').collapse('hide');
 $(`#correction<%= @correction.answer_id %>`).html('<%= j render :partial => 'corrections/corrections',
-  :collection =>  @corrections %>')
+  :collection => @corrections %>')
 $('.flash_wrapper').html("<%= j render 'layouts/notice' %>");

@@ -25,6 +25,9 @@ $(document).on('click','.correction-status a', function (e) {
     e.preventDefault();
     $(`#acceptCorrection${id}`).fadeIn().toggleClass('accept-correction-selected');
     $(`#corHlSelected${id}`).fadeIn().toggleClass('highlight-correction');
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $(`#acceptCorrection${id}`).offset().top-100
+    }, 1000);
 })
 
 $(function() {

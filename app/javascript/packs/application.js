@@ -30,21 +30,19 @@ $(document).on('click','.correction-status a', function (e) {
     }, 1000);
 })
 
-$(function() {
-    // hide alert's
-    setTimeout(function () {
-        $('.alert').fadeOut()
-    }, 5000)
-
-    // hide notice's
-    setTimeout(function () {
-        $('.alert').fadeOut()
-    }, 5000)
+document.addEventListener("turbolinks:load", function() {
+    $('.alert').hide();
+    $.hideNotice = function () {
+        setTimeout(function () {
+            $('.alert').fadeOut();
+        }, 3000);
+    }
+    $.hideNotice();
 
     // hide devise-notice
     setTimeout(function () {
         $('.devise-notice').fadeOut()
-    }, 5000)
+    }, 3000)
 
     // Show button for new question
     $('.new-question-title, .new-question-text-area').on('keyup', function() {
@@ -54,4 +52,4 @@ $(function() {
             $('.btn-new-question').fadeOut()
         }
     });
-})
+});

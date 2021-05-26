@@ -2,9 +2,11 @@
   <div class="container">
     <p class="h5 text-white mb-0" href="#">
       Datarum Test
-      <button type="button" class="btn btn-sm btn-info ml-2">
-        Questions <span class="badge badge-light"><%= Question.count %></span>
-      </button>
+      <% if user_signed_in? %>
+        <button type="button" class="btn btn-sm btn-info ml-2">
+          Questions <span class="badge badge-light"><%= Question.count %></span>
+        </button>
+      <% end %>
     </p>
       <% if user_signed_in? %>
         <div class="d-flex align-items-center">

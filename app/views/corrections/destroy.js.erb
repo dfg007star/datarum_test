@@ -1,3 +1,4 @@
+$.hideNotice();
 $(`#correction<%= @correction.answer_id %>`).html('<%= j render :partial => 'corrections/corrections',
   :collection => @corrections %>')
-$('.flash_wrapper').html("<%= j render 'layouts/notice' %>");
+$('.flash-wrapper').html("<%= j render 'layouts/notice' %>");

@@ -1,4 +1,5 @@
+$.hideNotice();
 $('.form-control-answer').val('');
 $('#collapseExample<%= @answer.question_id %>').collapse('hide');
 $(`#answer<%= @answer.question_id %>`).html('<%= j render :partial => 'answers/answers', :collection => Answer.where(question_id: @answer.question_id) %>');
-$('.flash_wrapper').html("<%= j render 'layouts/notice' %>");
+$('.flash-wrapper').html("<%= j render 'layouts/notice' %>");

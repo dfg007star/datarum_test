@@ -1,4 +1,5 @@
+$.hideNotice();
 $('#collapseAcceptCor<%= @correction.id %>').collapse('hide');
 $(`#answer<%= @correction.question_id %>`).html('<%= j render :partial => 'answers/answers',
   :collection => @answers %>');
-$('.flash_wrapper').html("<%= j render 'layouts/notice' %>");
+$('.flash-wrapper').html("<%= j render 'layouts/notice' %>");

@@ -19,10 +19,11 @@
       <button class="btn btn-sm btn-warning text-white mb-3 collapsed" type="button" data-toggle="collapse" data-target="#collapseAcceptCor<%= corrections.id %>" aria-expanded="false" aria-controls="collapseExample">
         Accept Correction<i class="arrow"></i>
       </button>
-      <%= link_to 'Delete', corrections, :method => :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-sm btn-danger mb-3" %>
+      <%= link_to 'Cancel', corrections, :method => :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-sm btn-secondary mb-3" %>
       <div class="collapse" id="collapseAcceptCor<%= corrections.id %>">
         <%= render :partial => 'corrections/accept_corrections', :locals => { :correction => corrections } %>
       </div>
+
     <% end %>
   <% end %>
 </div>
